@@ -1,0 +1,11 @@
+name: Run Shell Command
+
+on: [push]
+
+jobs:
+  single-step-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute Shell Command
+        run: echo "Hello, World!"
+
