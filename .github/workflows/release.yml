@@ -3,24 +3,9 @@ name: release
 on: push
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run lint
-        shell: bash
-        run: echo "Lint checks passed."
-
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run unit tests
-        shell: bash
-        run: echo "Unit tests passed."
-
-  package:
-    runs-on: ubuntu-latest
-    needs: [lint, unit-tests]
-    steps:
-      - name: Package artifact
-        shell: bash
-        run: echo "Packaging after lint and unit tests passed."
+  call-notify:
+    uses: ./.github/workflows/notify.yml
+    with:
+      environment: production
+    secrets:
+      NOTIFY_TOKEN: ${{ secrets.NOTIFY_TOKEN }}
