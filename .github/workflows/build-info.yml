@@ -1,0 +1,13 @@
+name: Build Info Demo
+
+on: push
+
+jobs:
+  show-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run build-info composite action
+        uses: ./.github/actions/build-info
