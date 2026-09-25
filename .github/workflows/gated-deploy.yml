@@ -1,0 +1,16 @@
+name: gated deploy
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        shell: bash
+        run: echo "Running tests on every push."
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: echo "Deploying from the main branch."
