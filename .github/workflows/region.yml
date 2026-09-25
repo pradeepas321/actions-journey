@@ -8,4 +8,5 @@ jobs:
     steps:
       - name: Print deploy region
         shell: bash
-        run: echo "Deploying to region: ${{ vars.DEPLOY_REGION }}"
+        run: |
+          echo "Deploying to region: ${{ vars.DEPLOY_REGION }}"

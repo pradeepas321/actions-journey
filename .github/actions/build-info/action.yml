@@ -1,13 +1,13 @@
 name: 'Build Info'
 description: 'Prints branch and commit information'
-
 runs:
   using: 'composite'
   steps:
     - name: Print branch
       shell: bash
-      run: echo "Branch: ${{ github.ref_name }}"
-
+      run: |
+        echo "Branch: ${{ github.ref_name }}"
     - name: Print commit
       shell: bash
-      run: echo "Commit: ${{ github.sha }}"
+      run: |
+        echo "Commit: ${{ github.sha }}"
