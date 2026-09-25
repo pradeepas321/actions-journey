@@ -1,0 +1,27 @@
+name: build report
+
+on: push
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write report
+        shell: bash
+        run: |
+          {
+            echo "Build report"
+            echo "Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Commit: ${{ github.sha }}"
+            echo "Branch: ${{ github.ref_name }}"
+            echo "Run number: ${{ github.run_number }}"
+          } > report.txt
+          echo "--- report.txt ---"
+          cat report.txt
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: report.txt
+          retention-days: 5
