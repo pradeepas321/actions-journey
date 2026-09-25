@@ -1,0 +1,15 @@
+name: checks
+
+on:
+  workflow_call:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run shared check
+        shell: bash
+        run: echo "Shared checks from checks.yml passed."
